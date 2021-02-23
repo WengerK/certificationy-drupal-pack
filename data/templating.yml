@@ -74,4 +74,36 @@ questions:
             - {value: "{= set varName = 'exemple' =}",              correct: false}
             - {value: "{= var varName = 'exemple' =}",              correct: false}
             - {value: '{# set varName #}',                          correct: false}
-            - {value: '{# var varName #}',                          correct: false}
+            - {value: '{# var varName #}',                          correct: false} 
+    -
+        question: "Using Twig, how can I create an absolute link to the front page?"
+        answers:
+            - {value: "{{ url('<front>') }}",                            correct: true}
+            - {value: "{{ path('<front>', {'absolute': true}) }}",       correct: false}
+            - {value: "{{ path('<front>') }}",                           correct: false}
+    -
+        question: "Using Twig, how I create a relative link to the front page?"
+        answers:
+            - {value: "{{ url('<front>') }}",    correct: false}
+            - {value: "{{ path('<front>') }}",   correct: true}   
+    -
+        question: "Using Twig, how I create a relative link to a static assets located in the current theme (Eg. seven)?"
+        answers:
+            - {value: "{{ file_url('seven', 'assets/hello.jpg') }}",        correct: false}
+            - {value: "{{ directory }} ~ /assets/hello.jpg",                correct: true}
+            - {value: "{{ theme_url('seven', 'assets/hello.jpg') }}",       correct: true}
+    -
+        question: "Using Twig, how can I create a relative link to an URI?"
+        answers:
+            - {value: "{{ file_url(uri) }}",  correct: true}
+            - {value: "{{ url(uri) }}",       correct: false}
+    -
+        question: "Using Twig, is it possible to create an absolute link to an URI?"
+        answers:
+            - {value: "Yes",  correct: false}
+            - {value: "No",   correct: true}
+    -
+        question: "Using Twig, when working on a Mail template (Eg. swiftmailer.html.twig), which function should you use to create link?"
+        answers:
+            - {value: "path",  correct: false}
+            - {value: "url",   correct: true}
